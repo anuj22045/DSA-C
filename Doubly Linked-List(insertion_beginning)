@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *prev;
+struct node *next;
+};
+struct node *head, *current, *ptr;
+
+void create(){
+head=malloc(sizeof(struct node));
+head->data=10;
+head->prev=NULL;
+head->next=NULL;
+
+current=malloc(sizeof(struct node));
+current->data=20;
+current->prev=head;
+current->next=NULL;
+head->next=current;
+
+current=malloc(sizeof(struct node));
+current->data=30;
+current->prev=head->next;
+current->next=NULL;
+head->next->next=current;
+
+}
+void display(){
+ptr=head;
+while(ptr!=NULL)
+{
+    printf("%d\n",ptr->data);
+    ptr=ptr->next;
+}
+}
+void ins_beg(){
+current=malloc(sizeof(struct node));
+if(head!=NULL)
+{
+    current->data=50;
+    current->prev=NULL;
+    current->next=head;
+    head=current;
+}
+else{
+    current->data=50;
+    current->prev=head;
+    current->next=NULL;
+    head=current;
+
+}
+}
+int main()
+{
+    create();
+    display();
+    ins_beg();
+    printf("after insertion\n");
+    display();
+    return 0;
+}
+
