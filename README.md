@@ -1,1 +1,1 @@
-this file is all about DSA in C language 
+this file is all about Data Structure in C language 
