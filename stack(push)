@@ -1,0 +1,19 @@
+#include<stdio.h>
+#define MAX_SIZE 10
+int stack[MAX_SIZE];
+int top=-1;
+void push(int val){
+if(top==MAX_SIZE-1){
+    printf("stack overflow\n");
+}
+top++;
+stack[top]=val;
+printf("pushed %d into the stack\n",val);
+}
+int main()
+{
+    push(5);
+    push(6);
+    push(7);
+    return 0;
+}
