@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>  
+struct node {
+    int data;
+    struct node *link;
+};
+struct node *top = NULL;
+
+void push(int value) { 
+    struct node *newnode = (struct node *)malloc(sizeof(struct node)); 
+    if (newnode == NULL) {
+        printf("Memory allocation failed, cannot push\n");
+        return;
+    }
+    newnode->data = value;
+    newnode->link = top;
+    top = newnode;
+    printf("Pushed %d into the stack\n", value);
+}
+void display() {
+    struct node *ptr = top;
+    printf("Stack elements:\n");
+    while (ptr != NULL) {
+        printf("%d\n", ptr->data);
+        ptr = ptr->link;
+    }
+}
+int main() {
+    push(5);
+    push(6);
+    push(7);
+    display();
+    return 0;
+}
