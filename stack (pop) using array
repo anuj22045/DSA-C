@@ -1,0 +1,33 @@
+#include <stdio.h>
+#define MAX_SIZE 10
+
+int stack[MAX_SIZE];
+int top = -1;
+void push(int val) {
+    if (top == MAX_SIZE - 1) {
+        printf("STACK OVERFLOW\n");
+        return;
+    }
+    top++;
+    stack[top] = val;
+    printf("pushed %d into the stack\n", val);
+}
+int pop() {
+    if (top == -1) {
+        printf("stack underflow\n");
+        return -1;
+    }
+    int val = stack[top];
+    top--;
+    return val;
+}
+int main() {
+    push(5);
+    push(6);
+    push(7);
+    int popped_val1 = pop();
+    int popped_val2 = pop();
+    printf("popped values: %d, %d\n", popped_val1, popped_val2);
+    return 0;
+}
+
