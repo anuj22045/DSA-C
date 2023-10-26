@@ -1,0 +1,48 @@
+#include<stdio.h>
+struct node{
+int data;
+struct node *link;
+};
+struct node *top=NULL;
+void push(int x){
+struct node *newnode=malloc(sizeof(struct node));
+if(newnode==NULL){
+    printf("cannot push to stack\n");
+    return ;
+}
+newnode->data=x;
+newnode->link=top;
+top=newnode;
+
+printf("pushed %d into the stack\n",x);
+}
+int pop(){
+if(top==NULL){
+    printf("stack is empty\n");
+}
+struct node *temp=top;
+int x=top->data;
+top=top->link;
+free(temp);
+return x;
+}
+void display(){
+struct node *ptr=top;
+printf("stack element:\n");
+while(ptr!=NULL){
+    printf("%d\n",ptr->data);
+    ptr=ptr->link;
+}
+}
+int main(){
+push(5);
+push(6);
+push(7);
+display();
+
+int popped_value1=pop();
+int popped_value2=pop();
+int popped_value3=pop();
+printf("popped values: %d, %d, %d\n",popped_value1,popped_value2, popped_value3);
+return 0;
+}
